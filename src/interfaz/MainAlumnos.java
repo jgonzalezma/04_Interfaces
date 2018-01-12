@@ -1,6 +1,8 @@
 package interfaz;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
 
 public class MainAlumnos {
 
@@ -36,7 +38,43 @@ public class MainAlumnos {
 		p5.setApellido("Diaz");
 		p5.setDni("77773333N");
 		alumnos.add(p5);
-
+		
+		//crear lista y rellenarla con nombres <String>
+		ArrayList<String> nombres = new ArrayList<String>();
+		nombres.add("imanol");
+		nombres.add("ander");
+		nombres.add("zubizarreta");
+		
+		NombreComparator nc = new NombreComparator();
+		nombres.sort(nc);
+		imprimirListaStrings(nombres);
+		
+	}//fin metodo main
+	
+	
+	public static void imprimirListaStrings(ArrayList<String> nombres){
+		//imprimir lista por pantalla
+				System.out.println("La lista es:----------");
+				Iterator<String> i = nombres.iterator();
+				
+				while(i.hasNext()){
+					String nombre = i.next();
+					System.out.println(nombre);
+				}
+				System.out.println("Fin de la lista:----------");
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
