@@ -49,9 +49,27 @@ public class MainAlumnos {
 		nombres.sort(nc);
 		imprimirListaStrings(nombres);
 		
+		imprimirListaPersonas(alumnos);
+		
+		PersonaComparator pc = new PersonaComparator();
+		alumnos.sort(pc);
+		imprimirListaPersonas(alumnos);
+		
 	}//fin metodo main
 	
 	
+	private static void imprimirListaPersonas(ArrayList<Persona> alumnos) {
+		System.out.println("La lista de personas:----------");
+		Iterator<Persona> i = alumnos.iterator();
+		while(i.hasNext()){
+			i.next().mostrarNombreApellido();
+		}
+		
+		System.out.println("Fin lista de personas:----------");
+		
+	}
+
+
 	public static void imprimirListaStrings(ArrayList<String> nombres){
 		//imprimir lista por pantalla
 				System.out.println("La lista es:----------");
