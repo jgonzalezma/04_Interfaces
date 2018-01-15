@@ -210,7 +210,9 @@ public class Persona {
 		return this.getNombre() + "," +this.getApellido() +
 				"," + this.getTelefono();
 	}
-	
+	public void mostrarPersona(){
+		System.out.println(this.getNombre() + " " + this.getApellido() + ", " + this.getEdad());
+	}
 	
 	
 	

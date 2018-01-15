@@ -2,7 +2,7 @@ package interfaz;
 
 import java.util.Comparator;
 
-public class PersonaComparator implements Comparator<Persona> {
+public class ApellidoComparator implements Comparator<Persona> {
 
 	@Override
 	public int compare(Persona p1, Persona p2) {
