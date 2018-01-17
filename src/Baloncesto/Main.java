@@ -15,21 +15,36 @@ public class Main {
 		partidos = crearLista("D:/Josu/Programación/partidosbasket.txt");
 		int opcion;
 		final int LISTAR = 1;
-		final int INSERTAR = 2;
-		final int ELIMINAR = 3;
+		final int LISTAO = 2;
+		final int INSERTAR = 3;
+		final int ELIMINAR = 4;
 		final int SALIR = 0;
 		
 		do {
 			System.out.println("---Menu---");
 			System.out.println("1- Listar partidos");
-			System.out.println("2- Insertar un partido");
-			System.out.println("3- Eliminar un partido");
+			System.out.println("2- Listar partidos por orden de puntos");
+			System.out.println("3- Insertar un partido");
+			System.out.println("4- Eliminar un partido");
 			System.out.println("0- Salir del programa y guardar cambios");
 			
 			Scanner lector = new Scanner(System.in);
 			opcion = Integer.parseInt(lector.nextLine());
 			switch (opcion) {
 			case LISTAR:
+				if (partidos.isEmpty()) {
+					System.out.println("La lista esta vacía");
+				} else {
+					Iterator<PartidoBasket> i = partidos.iterator();
+					while (i.hasNext()) {
+						PartidoBasket p = i.next();
+						p.mostarInfo();
+					}
+				}
+				break;
+			case LISTAO:
+				PuntosComparator pc = new PuntosComparator();
+				partidos.sort(pc);
 				if (partidos.isEmpty()) {
 					System.out.println("La lista esta vacía");
 				} else {

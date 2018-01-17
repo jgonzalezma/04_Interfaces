@@ -33,10 +33,8 @@ public class PartidoBasket {
 		this.puntosVisitante = puntosVisitante;
 	}
 	public int getPuntosTotales() {
+		puntosTotales = getPuntosLocal() + getPuntosVisitante();
 		return puntosTotales;
-	}
-	public void setPuntosTotales(int puntosTotales) {
-		this.puntosTotales = puntosTotales;
 	}
 	public void mostarInfo() {
 		System.out.println(getEquipoLocal() + " " + getPuntosLocal() + " " + getEquipoVisitante() + " " + getPuntosVisitante());
