@@ -19,6 +19,7 @@ public class Main {
 		final int LISTAMENOR = 3;
 		final int INSERTAR = 4;
 		final int ELIMINAR = 5;
+		final int AÑADIREQUIPOGANADOR = 6;
 		final int SALIR = 0;
 		
 		do {
@@ -28,6 +29,7 @@ public class Main {
 			System.out.println("3- Listar por orden de puntos (menor a mayor)");
 			System.out.println("4- Insertar un partido");
 			System.out.println("5- Eliminar un partido");
+			System.out.println("6- Añadir equipo ganador");
 			System.out.println("0- Salir del programa y guardar cambios");
 			
 			Scanner lector = new Scanner(System.in);
@@ -95,7 +97,15 @@ public class Main {
 				System.out.println("Introduce el nombre de un equipo para eliminar su partido");
 				String partidoEliminar = lector.nextLine();
 				eliminarPartidos(partidoEliminar, partidos);
-				break;	
+				break;
+			case AÑADIREQUIPOGANADOR:
+				System.out.println("Nombra el equipo ganador a añadir");
+				String eganador = lector.nextLine();
+				System.out.println("Nombra el año en el que ha ganado");
+				int anioganador = lector.nextInt();
+				System.out.println("Equipo ganador añadido");
+				addEquipoGanador();
+				break;
 			case SALIR:
 				guardarLista(partidos, "D:/Josu/Programación/partidosbasket.txt");
 				System.out.println("Guardando y saliendo...");
@@ -106,6 +116,22 @@ public class Main {
 			}
 			
 		} while (opcion != SALIR);
+	}
+
+	private static void addEquipoGanador() {
+		File equiposganadores = new File("D:/Josu/Programación/equiposganadores.txt");
+		try {
+			Scanner scan = new Scanner(equiposganadores);
+			while(scan.hasNext()){
+				String linea = scan.next();
+				String[] partes = linea.split(":");
+				Equipo e1 = new Equipo();
+				e1.setNombre(nombre);
+				
+				lista.add(e1);
+			}
+		} catch (Exception e) {
+		}
 	}
 
 	private static ArrayList<PartidoBasket> crearLista(String nombreFichero) {

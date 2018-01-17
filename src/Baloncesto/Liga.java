@@ -30,6 +30,8 @@ public class Liga {
 	public void addEquipo(Equipo equipo){
 		equipos.add(equipo);
 	}
-	
+	public String mostrarEquipos(){
+		return null;
+	}
 	
 }
