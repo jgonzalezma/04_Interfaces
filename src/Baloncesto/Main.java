@@ -101,15 +101,15 @@ public class Main {
 		Iterator<PartidoBasket> i = partidos.iterator();
 		while(i.hasNext()){
 			PartidoBasket p = i.next();
-			if(p.getEquipoLocal().equals(nombrefichero)){
+			if(p.getEquipoLocal().equals(nombrefichero) || (p.getEquipoVisitante().equals(nombrefichero))){
 				i.remove();
-				System.out.println(p.getEquipoLocal() + " eliminado");
+				System.out.println("El partido de " + p.getEquipoLocal() + " vs " + p.getEquipoVisitante() + " ha sido eliminado");
 			}
 		}}
 		
 		private static void guardarLista(ArrayList<PartidoBasket> partidos, String nombreFichero) {
 			try {
-				FileWriter fileWriter = new FileWriter(nombreFichero, true);
+				FileWriter fileWriter = new FileWriter(nombreFichero);
 				PrintWriter printWriter = new PrintWriter(fileWriter);
 				Iterator<PartidoBasket> it = partidos.iterator();
 				while(it.hasNext()){
