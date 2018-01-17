@@ -15,17 +15,19 @@ public class Main {
 		partidos = crearLista("D:/Josu/Programación/partidosbasket.txt");
 		int opcion;
 		final int LISTAR = 1;
-		final int LISTAO = 2;
-		final int INSERTAR = 3;
-		final int ELIMINAR = 4;
+		final int LISTAMAYOR = 2;
+		final int LISTAMENOR = 3;
+		final int INSERTAR = 4;
+		final int ELIMINAR = 5;
 		final int SALIR = 0;
 		
 		do {
 			System.out.println("---Menu---");
 			System.out.println("1- Listar partidos");
-			System.out.println("2- Listar partidos por orden de puntos");
-			System.out.println("3- Insertar un partido");
-			System.out.println("4- Eliminar un partido");
+			System.out.println("2- Listar por orden de puntos (mayor a menor)");
+			System.out.println("3- Listar por orden de puntos (menor a mayor)");
+			System.out.println("4- Insertar un partido");
+			System.out.println("5- Eliminar un partido");
 			System.out.println("0- Salir del programa y guardar cambios");
 			
 			Scanner lector = new Scanner(System.in);
@@ -42,9 +44,22 @@ public class Main {
 					}
 				}
 				break;
-			case LISTAO:
-				PuntosComparator pc = new PuntosComparator();
+			case LISTAMAYOR:
+				PuntosComparatorMayor pc = new PuntosComparatorMayor();
 				partidos.sort(pc);
+				if (partidos.isEmpty()) {
+					System.out.println("La lista esta vacía");
+				} else {
+					Iterator<PartidoBasket> i = partidos.iterator();
+					while (i.hasNext()) {
+						PartidoBasket p = i.next();
+						p.mostarInfo();
+					}
+				}
+				break;
+			case LISTAMENOR:
+				PuntosComparatorMenor pm = new PuntosComparatorMenor();
+				partidos.sort(pm);
 				if (partidos.isEmpty()) {
 					System.out.println("La lista esta vacía");
 				} else {
