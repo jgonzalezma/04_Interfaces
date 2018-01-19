@@ -13,6 +13,8 @@ public class Main {
 	public static void main(String[] args) {
 		ArrayList<PartidoBasket> partidos = new ArrayList<PartidoBasket>();
 		partidos = crearLista("D:/Josu/Programación/partidosbasket.txt");
+		ArrayList<EquiposGanadores> ganadoresLiga = new ArrayList<EquiposGanadores>();
+		ganadoresLiga = crearListaGanadores("D:/equiposganadores.txt");
 		int opcion;
 		final int LISTAR = 1;
 		final int LISTAMAYOR = 2;
@@ -20,6 +22,8 @@ public class Main {
 		final int INSERTAR = 4;
 		final int ELIMINAR = 5;
 		final int AÑADIREQUIPOGANADOR = 6;
+		final int LISTARGANADORES = 7;
+		final int ELIMINARGANADOR = 8;
 		final int SALIR = 0;
 		
 		do {
@@ -30,6 +34,8 @@ public class Main {
 			System.out.println("4- Insertar un partido");
 			System.out.println("5- Eliminar un partido");
 			System.out.println("6- Añadir equipo ganador");
+			System.out.println("7- Listar equipos ganadores");
+			System.out.println("8- Eliminar ganador");
 			System.out.println("0- Salir del programa y guardar cambios");
 			
 			Scanner lector = new Scanner(System.in);
@@ -100,14 +106,35 @@ public class Main {
 				break;
 			case AÑADIREQUIPOGANADOR:
 				System.out.println("Nombra el equipo ganador a añadir");
-				String eganador = lector.nextLine();
+				String eGanador = lector.nextLine();
 				System.out.println("Nombra el año en el que ha ganado");
-				int anioganador = lector.nextInt();
+				int anioGanador = Integer.parseInt(lector.nextLine());
 				System.out.println("Equipo ganador añadido");
-				addEquipoGanador();
+				EquiposGanadores g1 = new EquiposGanadores();
+				g1.setNombre(eGanador);
+				g1.setAnio(anioGanador);
+				ganadoresLiga.add(g1);
+				
+				break;
+			case LISTARGANADORES:
+				if (partidos.isEmpty()) {
+					System.out.println("La lista esta vacía");
+				} else {
+					Iterator<EquiposGanadores> i = ganadoresLiga.iterator();
+					while (i.hasNext()) {
+						EquiposGanadores eg = i.next();
+						eg.mostrarGanadores();
+					}
+				}
+				break;
+			case ELIMINARGANADOR:
+				System.out.println("Introduce el nombre del equipo que quieres eliminar");
+				String ganadorEliminado = lector.nextLine();
+				eliminarGanadores(ganadorEliminado, ganadoresLiga);
 				break;
 			case SALIR:
 				guardarLista(partidos, "D:/Josu/Programación/partidosbasket.txt");
+				guardarListaGanadores(ganadoresLiga, "D:/equiposganadores.txt");
 				System.out.println("Guardando y saliendo...");
 				break;
 			default:
@@ -116,22 +143,6 @@ public class Main {
 			}
 			
 		} while (opcion != SALIR);
-	}
-
-	private static void addEquipoGanador() {
-		File equiposganadores = new File("D:/Josu/Programación/equiposganadores.txt");
-		try {
-			Scanner scan = new Scanner(equiposganadores);
-			while(scan.hasNext()){
-				String linea = scan.next();
-				String[] partes = linea.split(":");
-				Equipo e1 = new Equipo();
-				e1.setNombre(nombre);
-				
-				lista.add(e1);
-			}
-		} catch (Exception e) {
-		}
 	}
 
 	private static ArrayList<PartidoBasket> crearLista(String nombreFichero) {
@@ -153,6 +164,25 @@ public class Main {
 		}
 		return lista;
 	}
+	private static ArrayList<EquiposGanadores> crearListaGanadores(String ficheroGanadores){
+		ArrayList<EquiposGanadores> ganadoresLista = new ArrayList<EquiposGanadores>();
+		File file2 = new File(ficheroGanadores);
+		try {
+			Scanner scan = new Scanner(file2);
+			while(scan.hasNext()){
+				String linea = scan.next();
+				String[] partes = linea.split(":");
+				EquiposGanadores e1 = new EquiposGanadores();
+				e1.setNombre(partes[0]);
+				e1.setAnio(Integer.parseInt(partes[1]));
+				ganadoresLista.add(e1);
+			}
+		} catch (Exception e) {
+		}
+		return ganadoresLista;
+		
+	}
+	
 	private static void eliminarPartidos(String nombrefichero, ArrayList<PartidoBasket> partidos){
 		Iterator<PartidoBasket> i = partidos.iterator();
 		while(i.hasNext()){
@@ -160,6 +190,15 @@ public class Main {
 			if(p.getEquipoLocal().equals(nombrefichero) || (p.getEquipoVisitante().equals(nombrefichero))){
 				i.remove();
 				System.out.println("El partido de " + p.getEquipoLocal() + " vs " + p.getEquipoVisitante() + " ha sido eliminado");
+			}
+		}}
+	private static void eliminarGanadores(String nombrefichero, ArrayList<EquiposGanadores> ganadoresLiga){
+		Iterator<EquiposGanadores> i = ganadoresLiga.iterator();
+		while(i.hasNext()){
+			EquiposGanadores a = i.next();
+			if(a.getNombre().equals(nombrefichero)){
+				i.remove();
+				System.out.println(a.getNombre() +" ha sido eliminado");
 			}
 		}}
 		
@@ -171,6 +210,20 @@ public class Main {
 				while(it.hasNext()){
 					PartidoBasket partido = it.next();
 					printWriter.println(partido.getStringGuardado());
+				}
+				fileWriter.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	}
+		private static void guardarListaGanadores(ArrayList<EquiposGanadores> guardarGanadores, String nombreFichero) {
+			try {
+				FileWriter fileWriter = new FileWriter(nombreFichero);
+				PrintWriter printWriter = new PrintWriter(fileWriter);
+				Iterator<EquiposGanadores> it = guardarGanadores.iterator();
+				while(it.hasNext()){
+					EquiposGanadores ganador = it.next();
+					printWriter.println(ganador.getStringGuardadoG());
 				}
 				fileWriter.close();
 			} catch (IOException e) {

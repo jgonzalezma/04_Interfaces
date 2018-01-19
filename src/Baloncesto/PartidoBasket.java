@@ -40,6 +40,9 @@ public class PartidoBasket {
 		System.out.println(getEquipoLocal() + " " + getPuntosLocal() + " " + getEquipoVisitante() + " " + getPuntosVisitante());
 		
 	}
+	public void setPuntosTotales(int puntosTotales) {
+		this.puntosTotales = puntosTotales;
+	}
 	public String getStringGuardado() {
 		return this.getEquipoLocal() + ":" + this.getPuntosLocal() + ":" + this.getEquipoVisitante() + ":" + this.getPuntosVisitante();
 	}
