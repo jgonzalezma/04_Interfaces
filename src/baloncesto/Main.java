@@ -107,12 +107,15 @@ public class Main {
 			case AÑADIREQUIPOGANADOR:
 				System.out.println("Nombra el equipo ganador a añadir");
 				String eGanador = lector.nextLine();
+				System.out.println("Nombra la liga");
+				String ligaGanador = lector.nextLine();
 				System.out.println("Nombra el año en el que ha ganado");
 				int anioGanador = Integer.parseInt(lector.nextLine());
 				System.out.println("Equipo ganador añadido");
 				EquiposGanadores g1 = new EquiposGanadores();
 				g1.setNombre(eGanador);
 				g1.setAnio(anioGanador);
+				g1.setLiga(ligaGanador);
 				ganadoresLiga.add(g1);
 				
 				break;
@@ -175,6 +178,7 @@ public class Main {
 				EquiposGanadores e1 = new EquiposGanadores();
 				e1.setNombre(partes[0]);
 				e1.setAnio(Integer.parseInt(partes[1]));
+				e1.setLiga(partes[2]);
 				ganadoresLista.add(e1);
 			}
 		} catch (Exception e) {
@@ -200,7 +204,9 @@ public class Main {
 				i.remove();
 				System.out.println("El partido de " + a.getNombre() +" ha sido eliminado");
 			}
-		}}
+			
+		}
+		}
 		
 		private static void guardarLista(ArrayList<PartidoBasket> partidos, String nombreFichero) {
 			try {

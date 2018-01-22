@@ -2,6 +2,7 @@ package baloncesto;
 
 public class EquiposGanadores {
 	private String nombre;
+	private String liga;
 	private int anio;
 	public String getNombre() {
 		return nombre;
@@ -15,10 +16,17 @@ public class EquiposGanadores {
 	public void setAnio(int anio) {
 		this.anio = anio;
 	}
+	public String getLiga() {
+		return liga;
+	}
+	public void setLiga(String liga) {
+		this.liga = liga;
+	}
 	public void mostrarGanadores(){
-		System.out.println(this.getNombre() + " ganó en " + this.getAnio());
+		System.out.println(this.getNombre() + " de la liga " + this.getLiga() + " ganó en " + this.getAnio());
 	}
 	public String getStringGuardadoG(){
-		return this.getNombre() + ":" + this.getAnio();
+		return this.getNombre() + ":" + this.getLiga() + ":" + this.getAnio();
 	}
+	
 }
