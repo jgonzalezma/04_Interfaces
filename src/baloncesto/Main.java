@@ -1,4 +1,4 @@
-package Baloncesto;
+package baloncesto;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -198,7 +198,7 @@ public class Main {
 			EquiposGanadores a = i.next();
 			if(a.getNombre().equals(nombrefichero)){
 				i.remove();
-				System.out.println(a.getNombre() +" ha sido eliminado");
+				System.out.println("El partido de " + a.getNombre() +" ha sido eliminado");
 			}
 		}}
 		

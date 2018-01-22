@@ -1,4 +1,4 @@
-package Baloncesto;
+package baloncesto;
 
 public class Equipo {
 	private String nombre;

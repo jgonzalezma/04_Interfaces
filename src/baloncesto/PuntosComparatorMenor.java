@@ -1,4 +1,4 @@
-package Baloncesto;
+package baloncesto;
 
 import java.util.Comparator;
 
