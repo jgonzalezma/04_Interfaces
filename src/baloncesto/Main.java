@@ -177,8 +177,8 @@ public class Main {
 				String[] partes = linea.split(":");
 				EquiposGanadores e1 = new EquiposGanadores();
 				e1.setNombre(partes[0]);
-				e1.setAnio(Integer.parseInt(partes[1]));
-				e1.setLiga(partes[2]);
+				e1.setLiga(partes[1]);
+				e1.setAnio(Integer.parseInt(partes[2]));
 				ganadoresLista.add(e1);
 			}
 		} catch (Exception e) {

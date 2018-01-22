@@ -4,6 +4,7 @@ public class EquiposGanadores {
 	private String nombre;
 	private String liga;
 	private int anio;
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -26,7 +27,7 @@ public class EquiposGanadores {
 		System.out.println(this.getNombre() + " de la liga " + this.getLiga() + " ganó en " + this.getAnio());
 	}
 	public String getStringGuardadoG(){
-		return this.getNombre() + ":" + this.getLiga() + ":" + this.getAnio();
+		return this.nombre + ":" + this.liga + ":" + this.anio;
 	}
 	
 }
