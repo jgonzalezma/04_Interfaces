@@ -24,6 +24,7 @@ public class Main {
 		final int AÑADIREQUIPOGANADOR = 6;
 		final int LISTARGANADORES = 7;
 		final int ELIMINARGANADOR = 8;
+		final int MASPUNTOS = 9;
 		final int SALIR = 0;
 		
 		do {
@@ -36,6 +37,7 @@ public class Main {
 			System.out.println("6- Añadir equipo ganador");
 			System.out.println("7- Listar equipos ganadores");
 			System.out.println("8- Eliminar ganador");
+			System.out.println("9- Partido con más puntos");
 			System.out.println("0- Salir del programa y guardar cambios");
 			
 			Scanner lector = new Scanner(System.in);
@@ -134,6 +136,11 @@ public class Main {
 				System.out.println("Introduce el nombre del equipo que quieres eliminar");
 				String ganadorEliminado = lector.nextLine();
 				eliminarGanadores(ganadorEliminado, ganadoresLiga);
+				break;
+			case MASPUNTOS:
+				for (int j = 0; j < partidos.size() ; j++) {
+					
+				}
 				break;
 			case SALIR:
 				guardarLista(partidos, "D:/Josu/Programación/partidosbasket.txt");
